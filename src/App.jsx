@@ -107,9 +107,7 @@ const handleRemoveFighter = (fighter) => {
       <h3>Money: ${money}</h3>
       <h3>Total Strength: {totalStrength}</h3>
       <h3>Total Agility: {totalAgility}</h3>
-
-        {team.length === 0 ? (
-          <p>Pick some team members!</p>) : 
+        {team.length === 0 ? (<p>Pick some team members!</p>) : 
           team.map((fighter, index) => (
               <li key={index}>
                 <h2>{fighter.name}</h2>
@@ -122,11 +120,9 @@ const handleRemoveFighter = (fighter) => {
                   Remove from Team
                 </button>
               </li>
-            ))
-          
-      }
+            ))}
       <h2>Fighters </h2>
-            {zombieFighters.map((fighter, index) => (
+            {team.map((fighter, index) => (
               <li key={index}>
                 <h2>{fighter.name}</h2>
                 <img src={fighter.img} alt={fighter.name}/>
