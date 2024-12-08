@@ -10,7 +10,7 @@ const App = () => {
   const [totalStrength, setTotalStrength] = useState(0);
   const [totalAgility, setTotalAgility] = useState(0);
 
-  const [zombieFighters] = useState([
+  const [zombieFighters, setZombieFighters] = useState([
     {
       name: "Survivor",
       price: 12,
@@ -83,31 +83,33 @@ const App = () => {
     },
   ]);
 
-  const handleAddFighter = (zombieFighter) => {
+  const handleAddFighter = (zombieFighters) => {
     if (money - zombieFighter.price < 0) {
       console.log("Not enough money");
     } else {
-      setTeam([...team, zombieFighter]);
-    setMoney(money - zombieFighter.price);
-    setTotalStrength(totalStrength + zombieFighter.strength);
-    setTotalAgility(totalAgility + zombieFighter.agility);
-  }
+      setTeam([...team, zombieFighters]);
+    setMoney(money - zombieFighters.price);
+    }
+    setTotalStrength(totalStrength + zombieFighters.strength);
+    setTotalAgility(totalAgility + zombieFighters.agility);
+  
 };
 
-const handleRemoveFighter = (fighter) => {
-  setTeam(team.filter((teamFighter) => teamFighter !== fighter));
-  setMoney(money + fighter.price);
+const handleRemoveFighter = (fighterToRemove) => {
+  setTeam(team.filter(teamFighter => teamFighter !== fighter));
+  setMoney(money + fighterToRemove.price);
   setTotalStrength(totalStrength - fighter.strength);
   setTotalAgility(totalAgility - fighter.agility);
 };
 
   return (
-    <>
-      <h1>Zombie Fight</h1>
+  <>
+    
+      <h1>Zombie Fighters</h1>
       <h3>Money: ${money}</h3>
-      <h3>Total Strength: {totalStrength}</h3>
-      <h3>Total Agility: {totalAgility}</h3>
-        {team.length === 0 ? (<p>Pick some team members!</p>) : 
+      <h3>Team Strength: {totalStrength}</h3>
+      <h3>Team Agility: {totalAgility}</h3>
+       <ul> {team.length === 0 ? (<p>Pick some team members!</p>) : 
           team.map((fighter, index) => (
               <li key={index}>
                 <h2>{fighter.name}</h2>
@@ -121,8 +123,10 @@ const handleRemoveFighter = (fighter) => {
                 </button>
               </li>
             ))}
+      </ul>
       <h2>Fighters </h2>
-            {team.map((fighter, index) => (
+          <ul>
+            {zombieFighters.map((fighter, index) => (
               <li key={index}>
                 <h2>{fighter.name}</h2>
                 <img src={fighter.img} alt={fighter.name}/>
@@ -135,6 +139,7 @@ const handleRemoveFighter = (fighter) => {
                 </button>
               </li>
             ))}
+        </ul>    
     </>
   );
 };
