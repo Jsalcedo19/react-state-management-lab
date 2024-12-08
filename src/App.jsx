@@ -10,7 +10,7 @@ const App = () => {
   const [totalStrength, setTotalStrength] = useState(0);
   const [totalAgility, setTotalAgility] = useState(0);
 
-  const [zombieFighters, setZombieFighters] = useState([
+  const [zombieFighters] = useState([
     {
       name: "Survivor",
       price: 12,
@@ -126,19 +126,19 @@ const handleRemoveFighter = (fighter) => {
           
       }
       <h2>Fighters </h2>
-            {team.map((fighter, index) => (
+            {zombieFighters.map((fighter, index) => (
               <li key={index}>
-                <h2>{zombieFighters.name}</h2>
+                <h2>{fighter.name}</h2>
                 <img src={fighter.img} alt={fighter.name}/>
                 <p>{fighter.name}</p>
                 <p>Price: ${fighter.price}</p>
                 <p>Strength: {fighter.strength}</p>
                 <p>Agility: {fighter.agility}</p>
-                <button onClick={() => handleRemoveFighter(fighter)}>
-                  Remove from Team
+                <button onClick={() => handleAddFighter(fighter)}>
+                  Add to Team
                 </button>
               </li>
-            ))};
+            ))}
     </>
   );
 };
