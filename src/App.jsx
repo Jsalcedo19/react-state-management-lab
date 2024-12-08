@@ -84,12 +84,10 @@ const App = () => {
   ]);
 
   const handleAddFighter = (zombieFighter) => {
-    if (money - zombieFighter.price < 0) {
-      console.log("Not enough money");
-    } else {
-      setTeam([...team, zombieFighter]);
-    setMoney(money - zombieFighter.price);
-    }
+    money - zombieFighter.price < 0 
+  ? console.log("Not enough money") 
+  : (setTeam([...team, zombieFighter]), setMoney(money - zombieFighter.price));
+
     setTotalStrength(totalStrength + zombieFighter.strength);
     setTotalAgility(totalAgility + zombieFighter.agility);
   
