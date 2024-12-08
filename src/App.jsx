@@ -109,8 +109,9 @@ const handleRemoveFighter = (fighterToRemove) => {
       <h3>Money: ${money}</h3>
       <h3>Team Strength: {totalStrength}</h3>
       <h3>Team Agility: {totalAgility}</h3>
-       <ul> {team.length === 0 ? (<p>Pick some team members!</p>) : 
-          team.map((fighter, index) => (
+
+       {team.length === 0 ? (<p>Pick some team members!</p>) : 
+         (<ul>  {team.map((fighter, index) => (
               <li key={index}>
                 <h2>{fighter.name}</h2>
                 <img src={fighter.img} alt={fighter.name} />
@@ -124,6 +125,7 @@ const handleRemoveFighter = (fighterToRemove) => {
               </li>
             ))}
       </ul>
+      )}
       <h2>Fighters </h2>
           <ul>
             {zombieFighters.map((fighter, index) => (
