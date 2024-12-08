@@ -108,7 +108,8 @@ const handleRemoveFighter = (fighterToRemove) => {
       <h3>Team Strength: {totalStrength}</h3>
       <h3>Team Agility: {totalAgility}</h3>
 
-       {team.length === 0 ? (<p>Pick some team members!</p>) : 
+          <h3>Team</h3>
+          {team.length === 0 ? (<p>Pick some team members!</p>) : 
          (<ul>  {team.map((zombieFighter, index) => (
               <li key={index}>
                 <h2>{zombieFighter.name}</h2>
